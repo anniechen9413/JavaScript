@@ -4,23 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title> HW05_BMI</title>
+    <title>HW05_BMI</title>
 </head>
-    
-<BODY>
+
+<body>
     <div>
         <h2>BMI計算</h2>
         <table>
             <tr>
-                <tb>身高:</tb>
-                <tb><input type="text" name="身高"id="height"></tb>
-                <tb>公分</tb>
+                <td>身高:</td>
+                <td><input type="text" name="身高" id="height"></td>
+                <td>公分</td>
             </tr>
-            <br>
             <tr>
-                <tb>體重:</tb>
-                <tb><input type="text" name="體重" id="weight"></tb>
-                <tb>公斤</tb>
+                <td>體重:</td>
+                <td><input type="text" name="體重" id="weight"></td>
+                <td>公斤</td>
             </tr>
         </table>
     </div>
@@ -28,44 +27,48 @@
     <div>
         <table>
             <tr>
-                <tb><input type="button" name="計算" id="btnRun" value="開始計算"></tb>
+                <td><input type="button" name="計算" id="btnRun" value="開始計算" onclick="calculateBMI()"></td>
             </tr>
             <tr>
-                <tb><input type="button" name="清除" id="btnClean" value="清除重填"></tb>
+                <td><input type="button" name="清除" id="btnClean" value="清除重填"></td>
             </tr>
         </table>
     </div>
     <br>
     <div>
-        <table><tr>
-            <tb>你的BMI為:</tb>
-            <span id="HW05_BMI"></span>
-            <br>
-            <tb>身體指數為:</tb>
-            <span id="grad"></span>
-        </tr>
+        <table>
+            <tr>
+                <td>你的BMI為:</td>
+                <span id="HW05_BMI"></span>
+                <br>
+                <td>身體指數為:</td>
+                <span id="grad"></span>
+            </tr>
         </table>
     </div>
 
-
     <script>
-        let cm=parseFloat(document.getElementById("height").value)/100;
-        let kg=parseFloat(document.getElementById("weight").value);
-        let bmi=Math.round(kg/(m*m)*10)/10;
-        document.getElementById("bmi").innerHTML=bmi;
+        function calculateBMI() {
+            let cm = parseFloat(document.getElementById("height").value) / 100;
+            let kg = parseFloat(document.getElementById("weight").value);
+            let bmi = Math.round(kg / (cm * cm) * 10) / 10;
+            document.getElementById("HW05_BMI").innerHTML = bmi;
 
-        if(bmi<18.5){
-                document.getElementById("grad").innerHTML="體重過輕";
-            }else if (bmi<24){
-                document.getElementById("grad").innerHTML="正常範圍";
-            }else if(bmi<27){
-                document.getElementById("grad").innerHTML="過重";
-            }else if(bmi<30){
-                document.getElementById("grad").innerHTML="輕度肥胖";
-            }else if(bmi<35){
-                document.getElementById("grad").innerHTML="中度肥胖";
-            }else{
-                document.getElementById("grad").innerHtml="重度肥胖"; 
+            if (bmi < 18.5) {
+                document.getElementById("grad").innerHTML = "體重過輕";
+            } else if (bmi < 24) {
+                document.getElementById("grad").innerHTML = "正常範圍";
+            } else if (bmi < 27) {
+                document.getElementById("grad").innerHTML = "過重";
+            } else if (bmi < 30) {
+                document.getElementById("grad").innerHTML = "輕度肥胖";
+            } else if (bmi < 35) {
+                document.getElementById("grad").innerHTML = "中度肥胖";
+            } else {
+                document.getElementById("grad").innerHTML = "重度肥胖";
+            }
+        }
     </script>
-</BODY>
+</body>
+
 </html>
