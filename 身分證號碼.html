@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>ID Number</title>
+</head>
+
+<body>
+    <h1 style="text-align: center;">確認身分證號碼</h1>
+    <div stytle="text-align: center;margin-top:25px;">
+        <label for="id">身分證號碼</label><input type="text" id="id">
+    </div>
+    <div style="text-align: center;margin-top:25px;">
+    <button id="calculate">檢查</button>
+    <button id="clear">清除</button>
+    </div>
+
+    <script>
+           function isIdNo(idNo) {
+            // 檢查長度
+            if (idNo.length !== 9) {
+                return false;
+            }
+
+            // 檢查第一碼 a..z,A..Z
+            var firstChar = idNo.charAt(0);
+            if (!(firstChar >= 'A' && firstChar <= 'Z')) {
+                return false;
+            }
+
+            // 檢查第二碼 1,2
+            var secondChar = idNo.charAt(1);
+            if (!(secondChar === '1' || secondChar === '2')) {
+                return false;
+            }
+
+            // 算出檢查碼
+            var sum = 0;
+            for (var i = 1; i <= 8; i++) {
+                sum += parseInt(idNo.charAt(i)) * (9 - i);
+            }
+            var remainder = sum % 10;
+            var checkCode = (10 - remainder) % 10;
+
+            // 比對算出的檢查碼是否和輸入的檢查碼一樣
+            return checkCode === parseInt(idNo.charAt(8));
+        }
+
+        function checkIdNo() {
+            var idNoInput = document.getElementById("idNoInput").value;
+            if (isIdNo(idNoInput)) {
+                window.alert("OK");
+            } else {
+                window.alert("Error!!");
+            }
+        }
+    </script>
+
+
+</body>
+</html>
